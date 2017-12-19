@@ -1,5 +1,5 @@
 # Jenkins as a Service - Docker & Docker-compose
-With this project you'll be able to generate your own Jenkins docker container from scratch (using the [jenkins-docker](https://github.com/odiazdom/jenkins-docker) repository to generate the images locally with '*make*'), thanks to a specific ansible role used to generate dinamically the folders, the docker-compose file, as well as the service manager (systemd) file.
+With this project you'll be able to generate your own Jenkins docker container from scratch (using the [jenkins-docker](https://github.com/devopstf/jenkins-docker) repository to generate the images locally with '*make*'), thanks to a specific ansible role used to generate dinamically the folders, the docker-compose file, as well as the service manager (systemd) file.
 
 ## Installation Guide
 So, you've decided to install yourself a Jenkins docker container and control it through a systemd service!
