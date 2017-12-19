@@ -18,12 +18,14 @@ This project comes with everything you need, but you can modify it as you like: 
 
 Here you can edit the variables used by ansible to setup your environment so everything goes as you like.
 
-### Time to execute our Ansible role
+### Time to execute our Ansible role!
 Once you've set up the variables matching your environment, it's time to begin. Just execute: `ansible-playbook playbook.yml`
 
 And that's it!
 Take in consideration that the first execution will take some time as it'll build the images locally.
 
 Once it has finished, you'll have your Jenkins already installed and working as a service. You'll only need to manage it through systemctl: `systemctl {start|stop|restart} jenkins`
+
+### Reconfigure anytime!
 
 You'll be able to reconfigure the docker-compose, jenkins.service files by changing the *vars-jenkins.yml* file and executing the playbook again: the role will stop the service and reconfigure everything to match the new configuration!
