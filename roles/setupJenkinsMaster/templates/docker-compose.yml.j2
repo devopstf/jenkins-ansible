@@ -1,0 +1,9 @@
+{{ jenkinsMasterName }}:
+  container_name: {{ jenkinsMasterName }}
+  image: {{ masterDockerImage }}
+  privileged: true
+  volumes: 
+    - {{ jenkinsMasterHome }}:/var/jenkins:Z
+  ports: 
+    - {{ masterPort }}:8080
+    - {{ slavesPort }}:50000

@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  become: true
+  vars_files:
+    - vars/jenkins-vars.yml
+  roles:
+    - setupJenkinsMaster

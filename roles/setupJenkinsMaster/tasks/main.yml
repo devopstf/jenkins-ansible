@@ -1,0 +1,54 @@
+---
+- name: Copy 'docker' files to host machine
+  copy:
+    src: docker/
+    dest: "{{ dockerImagesFolder }}"
+    mode: 0755
+    owner: centos
+    group: centos
+
+- name: Make sure docker daemon is up
+  systemd: 
+    name: docker
+    state: started
+
+- name: Execute makefile and build all images locally
+  make:
+    chdir: "{{ dockerImagesFolder }}"
+    target: build-all
+
+- name: Make sure "{{ composeInstallationPath }}" exists
+  file:
+    path: "{{ composeInstallationPath }}"
+    state: directory
+    recurse: yes
+    mode: 0755
+    owner: "{{ permissionOwner }}"
+    group: "{{ permissionGroup }}"
+
+- name: Generate docker-compose.yml file from templates
+  template:
+    src: "docker-compose.yml.j2"
+    dest: "{{ composeInstallationPath }}/docker-compose.yml"
+    mode: 0755
+    owner: "{{ permissionOwner }}"
+    group: "{{ permissionGroup }}"
+
+- name: Make sure "{{ jenkinsMasterHome }}" exists
+  file:
+    path: "{{ jenkinsMasterHome }}"
+    state: directory
+    recurse: yes
+    mode: 0755
+    owner: "{{ permissionOwner }}"
+    group: "{{ permissionGroup }}"
+
+
+- name: Generate systemctl file from templates
+  template:
+    src: jenkins.service.j2
+    dest: /etc/systemd/system/jenkins.service
+    mode: 0755
+    owner: "{{ permissionOwner }}"
+    group: "{{ permissionGroup }}"
+

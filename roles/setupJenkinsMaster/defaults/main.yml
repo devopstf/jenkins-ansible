@@ -1,0 +1,20 @@
+---
+### Environment variables
+# Define installation folders
+composeInstallationPath: /opt/docker-compose/jenkins
+dockerImagesFolder: /opt/dockerfiles/jenkins
+
+# Define Jenkins own folders
+mavenRepoFolder: /opt/.m2/repository
+jenkinsMasterHome: /opt/jenkins_home
+jenkinsTemporaryFolder: /tmp/jenkins
+
+# Define Jenkins ports
+masterPort: 80
+slavesPort: 50000
+
+# Define Master name
+jenkinsMasterName: jenkins
+
+# Define docker image to use
+masterDockerImage: odiadom/jenkins:2.90
